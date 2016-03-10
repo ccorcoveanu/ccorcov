@@ -1,0 +1,73 @@
+#navigation {
+  background-color: #4f3e7d;
+  box-shadow: 0 1px 3px rgba(1, 1, 1, 0.3);
+  overflow: hidden;
+  position: relative;
+  top: -105px;
+  transition: all .3s ease;
+  opacity: 1;
+
+  z-index: 100;
+
+  &.open {
+    top: 0;
+    opacity: 1!important;
+  }
+
+  .compressed & {
+    top: -110px;
+    background-color: #8377a3;
+    opacity: 0;
+    transition: none;
+  }
+
+  .compressed &.open {
+    top: 0;
+  }
+
+  // This will depend on the menu entry items
+  @include breakpoint(tablet) {
+    top: -325px;
+
+    .compressed & {
+      top: -330px;
+      background-color: #8377a3;
+    }
+  }
+}
+
+ul#menu--list {
+  color: #fff;
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    text-align: center;
+    height: 110px;
+    padding: 20px;
+
+    cursor: pointer;
+
+    &.about-me {
+      background-color: #DD1B16;
+    }
+
+    &.projects {
+      background-color: #80BD01;
+    }
+
+    &.blog {
+      background-color: #FFA431;
+    }
+  }
+
+  i {
+    font-size: 30px;
+  }
+
+
+  @include breakpoint(medium-desktop) {
+    width: 100%!important;
+  }
+
+}

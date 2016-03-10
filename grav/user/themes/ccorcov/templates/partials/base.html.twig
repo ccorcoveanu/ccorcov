@@ -1,0 +1,141 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+<head>
+
+    {% block head %}
+
+        <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+        <meta http-equiv="content-language" content="en">
+        {% include 'partials/metadata.html.twig' %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <link rel="preconnect" href="//192.168.7.7"/>
+
+        <link rel="canonical" href="{{ page.url(true, true) }}" />
+        {% block stylesheets %}
+            {% do assets.addCss('theme://compiled/css/font-awesome.min.css',101) %}
+            {% do assets.addCss('theme://compiled/css/all.min.css', 102) %}
+
+        {% endblock %}
+        {{ assets.css() }}
+
+    {% endblock head%}
+</head>
+<body id="top" class="{{ page.header.body_classes }}">
+<div class="overlay" id="body--overlay"></div>
+<div class="modal__container">
+    <div class="modal__outer">
+        <div class="modal__inner">
+
+        </div>
+    </div>
+</div>
+<div id="sb-site">
+
+    {% block fixed_top %}
+        <div id="fixed_top__container">
+            {% block header %}
+                <header id="header" class="clearfix">
+                    <div class="content__container clearfix">
+                        <div id="logo__container">
+                            <div id="logo__circle">
+                                <div id="logo__letter"></div>
+                            </div>
+                        </div>
+                        <div class="tagline">Write better code with each project. This is the true developer's goal!</div>
+                        <div id="js-hamburger" class="hamburger">
+                            <div class="hamburger--one"></div>
+                            <div class="hamburger--two"></div>
+                            <div class="hamburger--three"></div>
+                        </div>
+                    </div>
+                </header>
+            {% endblock %}
+
+            {% block navbar %}
+                <nav id="navigation" class="navbar">
+                    <ul id="menu--list" class="menu content__container clearfix">
+                        <li class="items-3 about-me">
+                            <i class="fa fa-user-secret"></i><br/>About me
+                        </li>
+                        <li class="items-3 projects">
+                            <i class="fa fa-code"></i><br/>Projects
+                        </li>
+                        <li class="items-3 blog">
+                            <i class="fa fa-rss"></i><br/>Blog
+                        </li>
+                    </ul>
+                </nav>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block body %}
+        <section id="body" class="{{ class }} content__container">
+
+            {% block homepage %}
+
+                <div class="home__content">
+                    <div class="images__container">
+                            <span class="unflip__container">
+                                <span class="flipper__container">
+                                    <span class="front">
+                                        <img id="about-me__image" class="user-pic" data-src="{{ url('theme://img/me1.jpg') }}" alt=""/>
+                                    </span>
+                                    <span class="back">
+                                        <img id="about-me__image" class="user-pic" data-src="{{ url('theme://img/zce1.jpg') }}" alt=""/>
+                                    </span>
+                                </span>
+                            </span>
+                    </div>
+
+                    <pre class="presentation__text language-js"
+                    ><span class="token comment"
+                        >// Hello there. Check out below where you are and who I am: </span
+                        ><br/>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><br
+                        />    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'Cristi_Corcoveanu'</span><span class="token punctuation">)</span
+                        ><br/><span class="token punctuation">);</span></pre>
+
+
+                    <div class="detailed__info">
+                        <p>As you probably noticed, this blog is focused on web developing. The main reason why I started doing this is to keep track of my own work and studies. I will try to add a post
+                        each time I will run into a problem and find a simple and elegant solution to that problem. Hopefully this will help you also, or at least provide interesting reads.</p>
+                        <p>Stick arround if you're interested in <a href="javascript:;">PHP frameworks</a>, <a href="javascript:;">Node.js</a> server applications, <a href="javascript:;">Angular</a> or anything web related.</p>
+                        <p>Also if you are looking for help and you think I can help you or your team, don't hesitate to contact me. Just click on my <a id="face-trigger" href="javascript:;">face</a> :)</p>
+                    </div>
+                </div>
+
+            {% endblock %}
+
+            {% block content %}{% endblock %}
+        </section>
+    {% endblock %}
+
+
+</div>
+
+
+{% block footer %}
+    <footer id="footer">
+        <img class="footer__image" data-src="{{ url('theme://img/code1.jpg') }}" alt="" />
+        <div id="footer__overlayed">
+
+        </div>
+
+        <div class="footer__content">
+            <i class="fa fa-facebook pulse2"></i>
+            <i class="fa fa-github pulse2"></i>
+        </div>
+    </footer>
+{% endblock %}
+
+{% block javascripts %}
+    {% do assets.addJs('jquery',102) %}
+    {% do assets.addJs('theme://compiled/js/app.min.js',101) %}
+{% endblock %}
+{{ assets.js() }}
+</body>
+</html>

@@ -1,0 +1,10 @@
+name: Ccorcov
+version: 1.0
+description: "Custom presentation web theme"
+icon: empire
+author:
+  name: Cristi Corcoveanu
+  email: cristi.corcoveanu@gmail.com
+  url: "/"
+
+ccorcov: antimatter, theme, core, modern, fast, responsive, html5, css3
